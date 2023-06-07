@@ -1,18 +1,10 @@
 <?php
 
-
-
-//1. Importar la conexión a la base de datos para seleccionar los registros de la tabla clientes
-
 require '../../includes/funciones.php';
 
 $bd = conectar_db();
 
-//2. Escribir el query o cadena SQL para seleccionar los datos:
-
 $consulta = "SELECT * FROM usuario";
-
-//3. Consultar la base de datos agregando el query y la variable $bd donde viene el resultado de la conexión:
 
 $resultado_consulta = mysqli_query($bd, $consulta);
 
@@ -41,11 +33,6 @@ $resultado_consulta = mysqli_query($bd, $consulta);
     </th>
     <?php 
     
-    //Vamos a MEZCLAR codigo PHP incrustado en una tabla HTML para mostrar los datos de la tabla cliente
-    //Vamos a seleccionar todos los datos de la tabla cliente para ser mostrados en una página HTML
-    //Usamos WHILE para que se ejecute mientras la tabla tenga datos
-    //Si la tabla clientes tiene 10 registros, while se ejecuta 10 veces y PHP repetirá  10 veces el código de HTML
-    //Observe que debimos hacer una sola linea PHP para imprimir un cierre } para encerrar el codigo HTML que se repite
     ?>
     <?php while($usuario = mysqli_fetch_assoc($resultado_consulta)){?>
     <tr>
@@ -66,7 +53,7 @@ $resultado_consulta = mysqli_query($bd, $consulta);
 </table>
 
 <?php 
-//Recuerde que podemos OPCIONALMENTE cerrar la base de datos actual, si no lo hacemos PHP lo hace
+
 mysqli_close($bd);
 ?>
 
